@@ -118,9 +118,16 @@ view: order_items {
     sql: ${TABLE}."USER_ID" ;;
   }
 
-  measure: count {
+  measure: number_of_order_items {
+    group_label: "Count"
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: number_of_users {
+    group_label: "Count"
+    type: count_distinct
+    sql: ${user_id} ;;
   }
 
   # ----- Sets of fields for drilling ------

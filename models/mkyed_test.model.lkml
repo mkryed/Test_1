@@ -24,3 +24,21 @@ persist_with: mkyed_test_default_datagroup
 # To create more sophisticated Explores that involve multiple views, you can use the join parameter.
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
+explore: order_items {
+  view_label: "(1) Order Items"
+    join: users {
+      view_label: "(2) Customers"
+      sql_on: ${order_items.user_id}=${users.id} ;;
+      relationship: many_to_one
+    }
+    join: inventory_items {
+      view_label: "(3) Inventory Items"
+      sql_on: ${order_items.inventory_item_id}=${inventory_items.id} ;;
+      relationship: many_to_one
+    }
+    join: products {
+      view_label: "(4) Products"
+      sql_on: ${inventory_items.product_id}=${products.id} ;;
+      relationship: many_to_one
+    }
+}
