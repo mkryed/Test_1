@@ -87,7 +87,7 @@ view: users {
 
   dimension: full_name{
     type: string
-    sql: ${first_name}||' '||${last_name} ;;
+    sql: ${first_name} ||' '|| ${last_name} ;;
   }
 
   dimension: latitude {
@@ -115,7 +115,7 @@ view: users {
     sql: ${TABLE}."ZIP" ;;
   }
 
-  measure: count {
+  measure: number_of_users{
     type: count
     drill_fields: [id, last_name, first_name, events.count, order_items.count]
   }
