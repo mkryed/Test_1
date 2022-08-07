@@ -1,6 +1,7 @@
 connection: "looker_partner_demo"
 
 include: "/views/*/*"
+include: "/explore/*"
 
 
 datagroup: mkyed_test_default_datagroup {

@@ -20,6 +20,7 @@ view: order_items {
       year
     ]
     sql: ${TABLE}.created_at ;;
+    convert_tz: no
   }
 
   dimension_group: delivered {
@@ -34,12 +35,18 @@ view: order_items {
       year
     ]
     sql: ${TABLE}.delivered_at ;;
+    convert_tz: no
   }
 
   dimension: inventory_item_id {
     type: number
     # hidden: yes
     sql: ${TABLE}.inventory_item_id ;;
+  }
+
+  dimension: status {
+    type: string
+    sql: ${TABLE}.status;;
   }
 
   dimension: order_id {
@@ -65,21 +72,12 @@ view: order_items {
       year
     ]
     sql: ${TABLE}.returned_at ;;
+    convert_tz: no
   }
 
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
-  }
-
-  measure: total_sale_price {
-    type: sum
-    sql: ${sale_price} ;;
-  }
-
-  measure: average_sale_price {
-    type: average
-    sql: ${sale_price} ;;
   }
 
   dimension_group: shipped {

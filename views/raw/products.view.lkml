@@ -22,16 +22,6 @@ view: products {
     sql: ${TABLE}.cost ;;
   }
 
-  measure: total_cost {
-    type: sum
-    sql: ${cost} ;;
-  }
-
-  measure: average_cost {
-    type: average
-    sql: ${cost} ;;
-  }
-
   dimension: department {
     type: string
     sql: ${TABLE}.department ;;
